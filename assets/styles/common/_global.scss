@@ -2,3 +2,11 @@
 	margin:0 auto;
 	max-width: $container-large-desktop;
 }
+body {
+	//font-family: $font-family-base;
+	font-size:1.25em;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}

@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * Required: set 'ot_theme_mode' filter to true.
+ */
+add_filter( 'ot_theme_mode', '__return_true' );
+
+/**
+ * Required: include OptionTree.
+ */
+require( trailingslashit( get_template_directory() ) . 'option-tree/ot-loader.php' );
+
 /**
  * Sage includes
  *
@@ -10,21 +21,21 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
-  'lib/utils.php',                 // Utility functions
-  'lib/init.php',                  // Initial theme setup and constants
-  'lib/wrapper.php',               // Theme wrapper class
-  'lib/conditional-tag-check.php', // ConditionalTagCheck class
-  'lib/config.php',                // Configuration
-  'lib/assets.php',                // Scripts and stylesheets
-  'lib/titles.php',                // Page titles
-  'lib/extras.php',                // Custom functions
+	'lib/utils.php', // Utility functions
+	'lib/init.php', // Initial theme setup and constants
+	'lib/wrapper.php', // Theme wrapper class
+	'lib/conditional-tag-check.php', // ConditionalTagCheck class
+	'lib/config.php', // Configuration
+	'lib/assets.php', // Scripts and stylesheets
+	'lib/titles.php', // Page titles
+	'lib/extras.php', // Custom functions
 ];
 
-foreach ($sage_includes as $file) {
-  if (!$filepath = locate_template($file)) {
-    trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
-  }
+foreach ( $sage_includes as $file ) {
+	if ( ! $filepath = locate_template( $file ) ) {
+		trigger_error( sprintf( __( 'Error locating %s for inclusion', 'sage' ), $file ), E_USER_ERROR );
+	}
 
-  require_once $filepath;
+	require_once $filepath;
 }
-unset($file, $filepath);
+unset( $file, $filepath );

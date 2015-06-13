@@ -1,0 +1,58 @@
+.posts-wrap {
+
+	.hentry {
+		position: relative;
+		margin:0 0 1em;
+
+		background-repeat: no-repeat;
+		background-size:cover;
+
+		&:hover {
+			& > .caption {
+				opacity: 1;
+			}
+		}
+
+		@media (max-width: $screen-xs-max) {
+			background-image: none !important;
+		}
+		.featured-image {
+			visibility: visible;
+		}
+		@media (min-width: $screen-sm-min) {
+			.featured-image {
+				visibility: hidden;
+			}
+		}
+
+	}
+
+	.caption {
+
+		//@extend .clearfix;
+
+		//display: table;
+
+		position: absolute;
+		top:0;
+		bottom: 0;
+		left:0;
+		right:0;
+
+		opacity: 0;
+
+		background:rgba($gray-darker, 0.75);
+		color:#fff;
+
+		text-align: center;
+
+		transition: opacity 0.25s;
+
+	}
+	.btn-readmore {
+		position: absolute;
+		top:50%;
+		margin-top:-1.5em;
+		transform: translateX(-50%);
+	}
+}
