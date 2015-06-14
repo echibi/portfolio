@@ -33,3 +33,18 @@ function excerpt_more() {
 }
 
 add_filter( 'excerpt_more', __NAMESPACE__ . '\\excerpt_more' );
+
+function infinite_paginate() {
+	//$loopFile       = $_POST['loop_file'];
+	$paged = $_POST['page_no'];
+
+	# Load the posts
+	set_query_var('page_no', $paged);
+	//query_posts( array( 'paged' => $paged ) );
+	get_template_part( 'templates/page', 'posts' );
+
+	exit;
+}
+
+add_action( 'wp_ajax_infinite_scroll', __NAMESPACE__ . '\\infinite_paginate' ); // for logged in user
+add_action( 'wp_ajax_nopriv_infinite_scroll', __NAMESPACE__ . '\\infinite_paginate' );

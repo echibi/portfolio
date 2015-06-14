@@ -13,7 +13,7 @@ add_theme_support( 'soil-relative-urls' ); // Enable relative URLs from Soil
 add_theme_support( 'soil-nice-search' ); // Enable nice search from Soil
 add_theme_support( 'soil-jquery-cdn' ); // Enable to load jQuery from the Google CDN
 add_theme_support( 'soil-disable-trackbacks' );
-//add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
+add_theme_support( 'soil-google-analytics', 'UA-15240548-4' );
 
 /**
  * Configuration values

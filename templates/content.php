@@ -3,7 +3,6 @@ use Roots\Sage\Utils;
 
 $image = Utils\get_featured_image_src();
 $inline_style = '';
-
 if ( ! empty( $image ) ) {
 	$inline_style = 'style="background-image:url(' . $image[0] . ')"';
 }

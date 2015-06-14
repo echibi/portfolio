@@ -1,0 +1,24 @@
+.images-wrap {
+	margin: 2em 0 0;
+	text-align: center;
+	.image-item {
+		position:relative;
+		margin: 0 0 1em;
+
+		&.has-caption {
+			padding:0.2em;
+			background: $gray-lighter;
+		}
+	}
+	.image-caption {
+		padding: 1em;
+		background:$gray-lighter;
+		text-align: left;
+	}
+
+	@media (min-width: $screen-sm-min) {
+		.image-item {
+			margin: 1em 0 2.5em;
+		}
+	}
+}

@@ -7,13 +7,26 @@
  */
 
 $args = array(
-	'post_type' => 'post'
+	'post_type' => 'post',
+	'status' => 'publish'
 );
+
+$page_no = get_query_var( 'page_no' );
+if ( 0 < $page_no ) {
+	$args['paged'] = $page_no;
+}
+
 $posts = new WP_Query( $args );
 ?>
-<div class="posts-wrap">
+<?php if ( '' == $page_no ) : ?>
+	<div class="posts-wrap">
+<?php endif; ?>
 <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 	<?php get_template_part( 'templates/content', get_post_type() !== 'post' ? get_post_type() : get_post_format() ); ?>
 <?php endwhile; ?>
-</div>
+<?php if ( '' == $page_no ) : ?>
+	</div>
+	<?php #$loader_src = trailingslashit(get_stylesheet_directory_uri().DIST_DIR) . 'images/puff.svg'; ?>
+	<span class="ajax-loader"></span>
+<?php endif; ?>
 <?php wp_reset_query(); ?>

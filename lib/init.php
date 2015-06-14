@@ -54,12 +54,11 @@ function unregister_post_tags() {
 add_action( 'init', __NAMESPACE__ . '\\unregister_post_tags' );
 
 /**
- * Initialize the meta boxes.
+ * Initialize the posts custom metaboxes.
  */
-
 function post_meta_boxes() {
 
-	$post_metabox = array(
+	$post_metabox        = array(
 		'id'       => 'post_settings',
 		'title'    => 'Settings',
 		'desc'     => '',
@@ -75,8 +74,65 @@ function post_meta_boxes() {
 				'std'   => 'off'
 			) )
 	);
+	$post_images_metabox = array(
+		'id'       => 'post_images',
+		'title'    => 'Images',
+		'desc'     => '',
+		'pages'    => array( 'post' ),
+		'context'  => 'normal',
+		'priority' => 'high',
+		'fields'   => array(
+			array(
+				'id'           => 'images_list',
+				'label'        => __( 'Images List', 'sage' ),
+				'desc'         => '',
+				'std'          => '',
+				'type'         => 'list-item',
+				'section'      => '',
+				'rows'         => '',
+				'post_type'    => '',
+				'taxonomy'     => '',
+				'min_max_step' => '',
+				'class'        => '',
+				'condition'    => '',
+				'operator'     => 'and',
+				'settings'     => array(
+					array(
+						'id'           => 'image',
+						'label'        => __( 'Image', 'sage' ),
+						'desc'         => '',
+						'std'          => '',
+						'type'         => 'upload',
+						'rows'         => '',
+						'post_type'    => '',
+						'taxonomy'     => '',
+						'min_max_step' => '',
+						'class'        => 'ot-upload-attachment-id',
+						'condition'    => '',
+						'operator'     => 'and'
+					),
+					array(
+						'id'           => 'text',
+						'label'        => __( 'Content', 'sage' ),
+						'desc'         => '',
+						'std'          => '',
+						'type'         => 'textarea-simple',
+						'rows'         => '6',
+						'post_type'    => '',
+						'taxonomy'     => '',
+						'min_max_step' => '',
+						'class'        => '',
+						'condition'    => '',
+						'operator'     => 'and'
+					)
+				)
+			)
+		)
+	);
+
 	if ( function_exists( 'ot_register_meta_box' ) ) {
 		ot_register_meta_box( $post_metabox );
+		ot_register_meta_box( $post_images_metabox );
 	}
 }
 
