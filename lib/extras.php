@@ -50,3 +50,38 @@ function infinite_paginate() {
 
 add_action( 'wp_ajax_infinite_scroll', __NAMESPACE__ . '\\infinite_paginate' ); // for logged in user
 add_action( 'wp_ajax_nopriv_infinite_scroll', __NAMESPACE__ . '\\infinite_paginate' );
+
+/**
+ * Removes the <p>-tags around images.
+ * @param $content
+ *
+ * @return mixed
+ */
+function filter_ptags_on_images($content){
+	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+
+//add_filter('the_content', __NAMESPACE__ . '\\filter_ptags_on_images', 9);
+
+function add_wrap_on_images( $content ) {
+
+	// A regular expression of what to look for.
+	$pattern = '/(<img([^>]*)>)/i';
+	// What to replace it with. $1 refers to the content in the first 'capture group', in parentheses above
+	$replacement = '<div class="image-wrap">$1</div>';
+
+	// run preg_replace() on the $content
+	$content = preg_replace( $pattern, $replacement, $content );
+
+	// return the processed content
+	return $content;
+}
+
+//add_filter( 'the_content', __NAMESPACE__ . '\\add_wrap_on_images', 11 );
+
+/*  Add responsive container to embeds
+/* ------------------------------------ */
+function embed_video( $html, $url, $attr ) {
+	return '<div class="video-wrap"><div class="video-container">' . $html . '</div></div>';
+}
+add_filter( 'embed_oembed_html', __NAMESPACE__ . '\\embed_video', 10, 3 );

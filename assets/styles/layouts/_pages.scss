@@ -1,6 +1,7 @@
 .home {
-	.page-content {
-		margin: 2em 0;
-		text-align: center;
-	}
+  .page-content {
+    max-width: $screen-sm-min;
+    margin: 2em auto;
+    text-align: center;
+  }
 }

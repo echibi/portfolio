@@ -1,87 +1,88 @@
 .posts-wrap {
+  max-width: $container-large-desktop;
+  margin: 0 auto;
+  .hentry {
+    position: relative;
+    margin: 0 0 1em;
 
-	.hentry {
-		position:            relative;
-		margin:              0 0 1em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 
-		background-repeat:   no-repeat;
-		background-size:     cover;
-		background-position: center center;
+    border: 1px solid $gray-lighter;
 
-		border:              1px solid $gray-lighter;
+    &:hover {
+      & > .caption {
+        opacity: 1;
+      }
+    }
 
-		&:hover {
-			& > .caption {
-				opacity: 1;
-			}
-		}
+    @media (max-width: $screen-xs-max) {
+      background-image: none !important;
+    }
+    .featured-image {
+      visibility: visible;
+    }
+    @media (min-width: $screen-sm-min) {
+      .featured-image {
+        visibility: hidden;
+      }
+    }
 
-		@media (max-width:    $screen-xs-max) {
-			background-image: none !important;
-		}
-		.featured-image {
-			visibility: visible;
-		}
-		@media (min-width: $screen-sm-min) {
-			.featured-image {
-				visibility: hidden;
-			}
-		}
+  }
 
-	}
+  .caption {
+    padding: 1em;
+    background: $gray-lighter;
+    color: #fff;
 
-	.caption {
-		padding:    1em;
-		background: $gray-lighter;
-		color:      #fff;
+    text-align: center;
+  }
 
-		text-align: center;
-	}
+  .btn-readmore {
 
-	.btn-readmore {
+  }
 
-	}
+  @media (min-width: $screen-md-min) {
+    .no-touch & {
+      .caption {
 
-	@media (min-width: $screen-md-min) {
-		.no-touch & {
-			.caption {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
-				position:   absolute;
-				top:        0;
-				bottom:     0;
-				left:       0;
-				right:      0;
+        padding: 0;
 
-				padding:    0;
+        opacity: 0;
 
-				opacity:    0;
+        background: rgba($gray-darker, 0.75);
 
-				background: rgba($gray-darker, 0.75);
-
-				transition: opacity 0.25s;
-			}
-			.btn-readmore {
-				position:   absolute;
-				top:        50%;
-				margin-top: -1.5em;
-				transform:  translateX(-50%);
-			}
-		}
-	}
+        transition: opacity 0.25s;
+      }
+      .btn-readmore {
+        position: absolute;
+        top: 50%;
+        margin-top: -1.5em;
+        transform: translateX(-50%);
+      }
+    }
+  }
 
 }
 
 .ajax-loader {
-	position:        fixed;
-	z-index:         2;
-	bottom:          2em;
-	left:            50%;
-	margin-left:     -22px;
-	display:         none;
+  position: fixed;
+  z-index: 2;
+  bottom: 2em;
+  left: 50%;
+  margin-left: -22px;
+  display: none;
 
-	height:          44px;
-	width:           44px;
+  height: 44px;
+  width: 44px;
 
-	background:      transparent url('../images/puff.svg') no-repeat center;
-	background-size: 44px 44px;
+  background: transparent url('../images/puff.svg') no-repeat center;
+  background-size: 44px 44px;
 }

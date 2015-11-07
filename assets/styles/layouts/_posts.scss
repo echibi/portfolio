@@ -2,25 +2,34 @@
 // Single post
 //------------
 
-
 .single {
-	.featured-image {
-		margin: 1em 0 0;
-		height: 300px;
-		background-repeat: no-repeat;
-		background-size:cover;
-		background-position: center center;
-	}
 
-	h1 {
-		margin: 1em auto 0.45em;
-	  	max-width: $screen-sm-min;
-	}
+  .featured-image {
+    margin: 0 (-$grid-gutter-width / 2) 0;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+
+  h1,h2, h3, h4, h5,
+  ul, ol, .video-wrap {
+    max-width: $screen-sm-min;
+    margin: 1.25em auto 0.75em;
+  }
+
+  h1 {
+    font-size: 2.25em;
+  }
   .entry-content {
-	p {
-	  max-width: $screen-sm-min;
-	  margin-left:auto;
-	  margin-right:auto;
-	}
+    p {
+      max-width: $screen-sm-min;
+      margin:0 auto 1.25em;
+    }
+  }
+
+  .images-wrap {
+
   }
 }
