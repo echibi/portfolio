@@ -1,6 +1,8 @@
 //---------------------------
 // Single post
 //------------
+
+
 .single {
 	.featured-image {
 		margin: 1em 0 0;
@@ -11,6 +13,14 @@
 	}
 
 	h1 {
-		margin: 1em 0 0.45em;
+		margin: 1em auto 0.45em;
+	  	max-width: $screen-sm-min;
 	}
+  .entry-content {
+	p {
+	  max-width: $screen-sm-min;
+	  margin-left:auto;
+	  margin-right:auto;
+	}
+  }
 }

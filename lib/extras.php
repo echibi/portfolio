@@ -37,9 +37,11 @@ add_filter( 'excerpt_more', __NAMESPACE__ . '\\excerpt_more' );
 function infinite_paginate() {
 	//$loopFile       = $_POST['loop_file'];
 	$paged = $_POST['page_no'];
+	$selected_category = $_POST['selected_category'];
 
 	# Load the posts
 	set_query_var('page_no', $paged);
+	set_query_var('selected_category', $selected_category);
 	//query_posts( array( 'paged' => $paged ) );
 	get_template_part( 'templates/page', 'posts' );
 

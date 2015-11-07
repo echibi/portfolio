@@ -78,16 +78,10 @@ function assets() {
 	wp_enqueue_script( 'sage_js', asset_path( 'scripts/main.js' ), [ 'jquery' ], null, true );
 
 	if ( is_front_page() ) {
-
-		$count_posts = wp_count_posts();
-		$posts_per_page = get_option('posts_per_page');
-		$max_pages = floor($count_posts->publish / $posts_per_page) + 1; // Add one since we already are at page 1
-
 		$script_params = array(
 			'wp_url' => get_bloginfo( 'wpurl' ),
-			'total_pages' => $max_pages
+			//'total_pages' => $max_pages
 		);
-
 		wp_localize_script( 'sage_js', 'scriptParams', $script_params );
 	}
 

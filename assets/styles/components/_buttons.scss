@@ -8,10 +8,19 @@
 
 	text-transform: uppercase;
 
-	&:hover {
+	&:hover, &.active {
 		background: #fff;
 		border:1px solid $brand-info;
 		color:$brand-info;
 		text-decoration: none;
 	}
+}
+
+.filter-category-wrap {
+  margin: 1em 0 2em;
+  text-align: center;
+}
+.category-change {
+  margin: 0 0 0.5em;
+  @extend .btn-readmore;
 }

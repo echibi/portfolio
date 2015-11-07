@@ -11,4 +11,21 @@
 		<?php the_content(); ?>
 	</div>
 <?php endwhile; ?>
+<?php
+/*
+ * Get top-level categories and list them as buttons.
+ */
+$categories = get_categories( array(
+	'orderby' => 'name',
+	'parent'  => 0
+) );
+if ( ! empty( $categories ) ) : ?>
+	<div class="filter-category-wrap">
+	<?php foreach ( $categories as $category ) : ?>
+		<button class="category-change" data-category-id="<?php echo $category->term_id; ?>">
+			<?php echo $category->name; ?>
+		</button>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>
 <?php get_template_part( 'templates/page', 'posts' ); ?>

@@ -72,7 +72,14 @@ function post_meta_boxes() {
 				'type'  => 'on-off',
 				'desc'  => __( 'Shows a link to the post on hover', 'sage' ),
 				'std'   => 'off'
-			) )
+			),
+			array(
+				'id'           => 'custom_link_text',
+				'label'        => __( 'Custom Link text', 'sage' ),
+				'std'          => '',
+				'rows'         => '2',
+				'type'         => 'textarea-simple',
+			))
 	);
 	$post_images_metabox = array(
 		'id'       => 'post_images',
