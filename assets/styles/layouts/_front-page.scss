@@ -3,7 +3,7 @@
   margin: 0 auto;
   .hentry {
     position: relative;
-    margin: 0 0 1em;
+    margin: 0 0 2em;
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,6 +24,7 @@
       visibility: visible;
     }
     @media (min-width: $screen-sm-min) {
+      margin: 0 0 4.5em;
       .featured-image {
         visibility: hidden;
       }
