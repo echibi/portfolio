@@ -7,8 +7,9 @@
  */
 
 $args = array(
-	'post_type' => 'post',
-	'status'    => 'publish'
+	'post_type'   => 'post',
+	'post_status' => 'publish',
+	'paged'       => 1
 );
 // Check infinite scroll page.
 $page_no = get_query_var( 'page_no' );
@@ -21,6 +22,7 @@ $selected_category_id = get_query_var( 'selected_category' );
 if ( 0 < $selected_category_id ) {
 	$args['cat'] = $selected_category_id;
 }
+
 $posts = new WP_Query( $args );
 
 /**
@@ -29,11 +31,8 @@ $posts = new WP_Query( $args );
  * so that ajax knows when to stop trying to load more.
  */
 if ( $page_no < 1 ) {
-	$count_posts    = $posts->found_posts;
-	$posts_per_page = get_option( 'posts_per_page' );
-	$max_pages      = floor( $count_posts / $posts_per_page ) + 1; // Add one since we already are at page 1
-	$script_params  = array(
-		'total_pages' => $max_pages
+	$script_params = array(
+		'total_pages' => $posts->max_num_pages
 	);
 	wp_localize_script( 'sage_js', 'frontpageParams', $script_params );
 }
@@ -46,7 +45,6 @@ if ( $page_no < 1 ) {
 <?php endwhile; ?>
 <?php if ( '' == $page_no ) : ?>
 	</div>
-	<?php #$loader_src = trailingslashit(get_stylesheet_directory_uri().DIST_DIR) . 'images/puff.svg'; ?>
 	<span class="ajax-loader"></span>
 <?php endif; ?>
 <?php wp_reset_query(); ?>

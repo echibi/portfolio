@@ -35,14 +35,13 @@ function excerpt_more() {
 add_filter( 'excerpt_more', __NAMESPACE__ . '\\excerpt_more' );
 
 function infinite_paginate() {
-	//$loopFile       = $_POST['loop_file'];
-	$paged = $_POST['page_no'];
+	$paged             = $_POST['page_no'];
 	$selected_category = $_POST['selected_category'];
 
 	# Load the posts
-	set_query_var('page_no', $paged);
-	set_query_var('selected_category', $selected_category);
-	//query_posts( array( 'paged' => $paged ) );
+	set_query_var( 'page_no', $paged );
+	set_query_var( 'selected_category', $selected_category );
+
 	get_template_part( 'templates/page', 'posts' );
 
 	exit;
@@ -53,12 +52,13 @@ add_action( 'wp_ajax_nopriv_infinite_scroll', __NAMESPACE__ . '\\infinite_pagina
 
 /**
  * Removes the <p>-tags around images.
+ *
  * @param $content
  *
  * @return mixed
  */
-function filter_ptags_on_images($content){
-	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+function filter_ptags_on_images( $content ) {
+	return preg_replace( '/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content );
 }
 
 //add_filter('the_content', __NAMESPACE__ . '\\filter_ptags_on_images', 9);
@@ -84,4 +84,5 @@ function add_wrap_on_images( $content ) {
 function embed_video( $html, $url, $attr ) {
 	return '<div class="video-wrap"><div class="video-container">' . $html . '</div></div>';
 }
+
 add_filter( 'embed_oembed_html', __NAMESPACE__ . '\\embed_video', 10, 3 );
