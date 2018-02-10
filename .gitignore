@@ -1,8 +1,34 @@
-# Include your project-specific ignores in this file
-# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
-dist
-bower_components
 node_modules
-npm-debug.log
-option-tree
-.editorconfig
+bower_components
+
+.idea
+
+# Application
+local-config.php
+
+# Keep Plugins for now since not all is supported by https://wpackagist.org/
+
+wp-content/plugins/*
+!wp-content/plugins/.gitkeep
+# wp-content/mu-plugins/*/
+wp-content/upgrade
+wp-content/uploads/*
+!wp-content/uploads/.gitkeep
+
+# WordPress
+wp
+# index.php
+.htaccess
+
+# Compiled files
+wp-content/themes/evaskeramik-v2/dist
+
+# Composer
+vendor/*
+!vendor/.gitkeep
+
+# Docker
+docker/app_data
+
+# OS
+Thumbs.db

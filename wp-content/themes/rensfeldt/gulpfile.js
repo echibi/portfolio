@@ -21,7 +21,7 @@ var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
 // See https://github.com/austinpray/asset-builder
-var manifest = require('asset-builder')('./wp-content/themes/rensfeldt/assets/manifest.json');
+var manifest = require('asset-builder')('./assets/manifest.json');
 
 // `path` - Paths to base asset directories. With trailing slashes.
 // - `path.source` - Path to the source files. Default: `assets/`
@@ -81,11 +81,9 @@ var cssTasks = function(filename) {
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
     })
-      /*
     .pipe(function() {
       return gulpif('*.less', less());
     })
-    */
     .pipe(function() {
       return gulpif('*.scss', sass({
         outputStyle: 'nested', // libsass doesn't support expanded yet
@@ -209,7 +207,7 @@ gulp.task('images', function() {
     .pipe(imagemin({
       progressive: true,
       interlaced: true,
-      svgoPlugins: [{removeUnknownsAndDefaults: false}]
+      svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
     }))
     .pipe(gulp.dest(path.dist + 'images'))
     .pipe(browserSync.stream());

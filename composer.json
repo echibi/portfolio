@@ -1,0 +1,31 @@
+{
+  "require": {
+    "php": ">=7.0",
+    "johnpbloch/wordpress": "^4.9"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "web/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "web/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "wp"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "cp wp/index.php ./index.php",
+      "sed -i \"s/\\/wp-blog-header/\\/wp\\/wp-blog-header/g\" index.php"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "Rensfeldt\\": "wp-content/themes/rensfeldt/libraries"
+    }
+  }
+}
