@@ -9,9 +9,9 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	include( dirname( __FILE__ ) . '/local-config.php' );
 } else {
 	define( 'WP_LOCAL_DEV', false );
-	define( 'DB_NAME', 'portfolio' );
-	define( 'DB_USER', 'root' );
-	define( 'DB_PASSWORD', '' );
+	define( 'DB_NAME', 'wordpress');
+	define( 'DB_USER', 'root');
+	define( 'DB_PASSWORD', '');
 	define( 'DB_HOST', 'localhost' ); // Probably 'localhost'
 	// ========================
 	// Custom Content Directory
@@ -20,7 +20,10 @@ if ( file_exists( dirname( __FILE__ ) . '/local-config.php' ) ) {
 	define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
 }
 
-
+define('ADMIN_COOKIE_PATH', '/');
+define('COOKIE_DOMAIN', '');
+define('COOKIEPATH', '');
+define('SITECOOKIEPATH', '');
 // ================================================
 // You almost certainly do not want to change these
 // ================================================

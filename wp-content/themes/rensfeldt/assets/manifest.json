@@ -22,6 +22,10 @@
     }
   },
   "config": {
-    "devUrl": "http://localhost/rensfeldt.com"
+    "devUrl": "http://localhost:8080"
+  },
+  "paths" : {
+    "source": "wp-content/themes/rensfeldt/assets/",
+    "dist" : "wp-content/themes/rensfeldt/dist/"
   }
 }

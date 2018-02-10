@@ -8,7 +8,7 @@ local-config.php
 
 # Keep Plugins for now since not all is supported by https://wpackagist.org/
 
-wp-content/plugins/*
+#wp-content/plugins/*
 !wp-content/plugins/.gitkeep
 # wp-content/mu-plugins/*/
 wp-content/upgrade
